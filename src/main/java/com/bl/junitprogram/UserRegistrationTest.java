@@ -64,7 +64,22 @@ public class UserRegistrationTest {
 
 	@Test
 	public void givenPhoneNumber_WhenNotProper_shouldReturnFalse() {
-		boolean result = userRegistration.mobileNumber("785415451");
+		boolean result = userRegistration.mobileNumber("784512121");
+		Assert.assertEquals(false, result);
+	}
+
+	/*
+	 * User need to follow Pre-defined password Rule-1 ---> Minimun 8 characters
+	 */
+	@Test
+	public void givenPassword_WhenProper_ShouldReturnTrue() {
+		boolean result = userRegistration.password("Rajakumarbaitha");
+		Assert.assertEquals(true, result);
+	}
+
+	@Test
+	public void givenPassword_WhenNotProper_ShouldReturnFalse() {
+		boolean result = userRegistration.password("rajakumarbaitha");
 		Assert.assertEquals(false, result);
 	}
 
