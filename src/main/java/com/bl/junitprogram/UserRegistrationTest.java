@@ -58,13 +58,13 @@ public class UserRegistrationTest {
 	 */
 	@Test
 	public void givenPhoneNumber_WhenProper_shouldReturnTrue() {
-		boolean result = userRegistration.mobileNumber("91 8709177407");
+		boolean result = userRegistration.mobileNumber("91 7883426320");
 		Assert.assertEquals(true, result);
 	}
 
 	@Test
 	public void givenPhoneNumber_WhenNotProper_shouldReturnFalse() {
-		boolean result = userRegistration.mobileNumber("784512121");
+		boolean result = userRegistration.mobileNumber("5647891233");
 		Assert.assertEquals(false, result);
 	}
 
@@ -73,13 +73,28 @@ public class UserRegistrationTest {
 	 */
 	@Test
 	public void givenPassword_WhenProper_ShouldReturnTrue() {
-		boolean result = userRegistration.password("Rajakumarbaitha");
+		boolean result = userRegistration.password("Qwertyuiop");
 		Assert.assertEquals(true, result);
 	}
 
 	@Test
 	public void givenPassword_WhenNotProper_ShouldReturnFalse() {
-		boolean result = userRegistration.password("rajakumarbaitha");
+		boolean result = userRegistration.password("qwertyyuuiop");
+		Assert.assertEquals(false, result);
+	}
+
+	/*
+	 * Rule-2 ---> Should have at least 1 upper case
+	 */
+	@Test
+	public void givenPasswordRule2_WhenProper_ShouldReturnTrue() {
+		boolean result = userRegistration.password2("Qwertyu19");
+		Assert.assertEquals(true, result);
+	}
+
+	@Test
+	public void givenPasswordRule2_WhenNotProper_ShouldReturnFalse() {
+		boolean result = userRegistration.password2("qwerrty");
 		Assert.assertEquals(false, result);
 	}
 
