@@ -10,6 +10,7 @@ import java.util.regex.Pattern;
  *
  */
 public class UserRegistration {
+
 	@Test
 	public boolean firstName(String firstName) {
 		String regex = "^[A-Z]{1}[a-z]{2,}$";
@@ -67,5 +68,14 @@ public class UserRegistration {
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(password);
 		return matcher.matches();
+	}
+
+	@Test
+	public boolean password4(String password) {
+		String regex = "((?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$-%^&*]).{8,})";
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(password);
+		return matcher.matches();
+
 	}
 }

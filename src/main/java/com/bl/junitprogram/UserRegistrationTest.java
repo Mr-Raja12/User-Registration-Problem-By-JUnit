@@ -58,7 +58,7 @@ public class UserRegistrationTest {
 	 */
 	@Test
 	public void givenPhoneNumber_WhenProper_shouldReturnTrue() {
-		boolean result = userRegistration.mobileNumber("91 7883426320");
+		boolean result = userRegistration.mobileNumber("91 8709177407");
 		Assert.assertEquals(true, result);
 	}
 
@@ -109,7 +109,22 @@ public class UserRegistrationTest {
 
 	@Test
 	public void givenPasswordRule3_WhenNotProper_ShouldReturnFalse() {
-		boolean result = userRegistration.password3("ra@ba");
+		boolean result = userRegistration.password3("ar@ba");
+		Assert.assertEquals(false, result);
+	}
+
+	/*
+	 * Rule-4 ---> Has exactly 1 special character
+	 */
+	@Test
+	public void givenPasswordRule4_WhenProper_ShouldReturnTrue() {
+		boolean result = userRegistration.password4("Rajabaitha@1999");
+		Assert.assertEquals(true, result);
+	}
+
+	@Test
+	public void givenPasswordRule4_WhenNotProper_ShouldReturnFalse() {
+		boolean result = userRegistration.password4("Rajal99");
 		Assert.assertEquals(false, result);
 	}
 
