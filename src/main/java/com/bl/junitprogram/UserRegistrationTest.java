@@ -1,146 +1,44 @@
 package com.bl.junitprogram;
 
-import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
-/**
- * 
- * @author Raja
- *
- */
+import java.util.Arrays;
+import java.util.Collection;
+import static org.junit.Assert.assertEquals;
+
+@RunWith(Parameterized.class)
 public class UserRegistrationTest {
-	UserRegistration userRegistration = new UserRegistration();
+	private String emailTest;
+	private boolean expectedResult;
+	private UserRegistration validateEmail;
 
-	/*
-	 * User need to a valid first name, last name
-	 */
-	@Test
-	public void givenFirstName_WhenProper_ShouldReturnTrue() {
-		boolean result = userRegistration.firstName("Raja");
-		Assert.assertEquals(true, result);
+	public UserRegistrationTest(String email, boolean expectedResult) {
+		this.emailTest = email;
+		this.expectedResult = expectedResult;
+	}
+
+	@Before
+	public void initialize() {
+		validateEmail = new UserRegistration();
+	}
+
+	@Parameterized.Parameters
+	public static Collection data() {
+		return Arrays.asList(new Object[][] { { "abc@yahoo.com", true }, { "abc-100@yahoo.com", true },
+				{ "abc.100@yahoo.com", true }, { "abc111@abc.com", true }, { "abc-100@abc.net", true },
+				{ "abc.100@abc.com.au", true }, { "abc@1.com", true }, { "abc@gmail.com.com", true },
+				{ "abc+100@gmail.com", true }, { "abc", false }, { "abc@.com.my", false }, { "abc123@gmail.a", false },
+				{ "abc123@.com", false }, { "abc123@.com.com", false }, { ".abc@abc.com", false },
+				{ "abc()*@gmail.com", false }, { "abc@%*.com", false }, { "abc..2002@gmail.com", false },
+				{ "abc.@gmail.com", false }, { "abc@abc@gmail.com", false }, { "abc@gmail.com.1a", false },
+				{ "abc@gmail.com.aa.au", false } });
 	}
 
 	@Test
-	public void givenFirstName_WhenNotProper_ShouldReturnFalse() {
-		boolean result = userRegistration.firstName("raja");
-		Assert.assertEquals(false, result);
+	public void givenEmailAsVar_ShouldReturnTrueorFalse() {
+		assertEquals(expectedResult, validateEmail.validateEmail(emailTest));
 	}
-
-	@Test
-	public void givenLastName_whenProper_ShouldReturnTrue() {
-		boolean result = userRegistration.lastName("Baitha");
-		Assert.assertEquals(true, result);
-	}
-
-	@Test
-	public void givenLastName_WhenNotProper_ShouldReturnFalse() {
-		boolean result = userRegistration.lastName("baitha");
-		Assert.assertEquals(false, result);
-	}
-
-	/*
-	 * User need to valid email id.
-	 */
-	@Test
-	public void givenEmail_WhenProper_ShouldReturnTrue() {
-		boolean result = userRegistration.email("abc.xyz@bl.co.in");
-		Assert.assertEquals(true, result);
-	}
-
-	@Test
-	public void givenEmail_WhenNotProper_ShouldReturnFalse() {
-		boolean result = userRegistration.email("abc&.com");
-		Assert.assertEquals(false, result);
-	}
-
-	/*
-	 * User need to follow Pre-defined mobile format
-	 */
-	@Test
-	public void givenPhoneNumber_WhenProper_shouldReturnTrue() {
-		boolean result = userRegistration.mobileNumber("91 8709177407");
-		Assert.assertEquals(true, result);
-	}
-
-	@Test
-	public void givenPhoneNumber_WhenNotProper_shouldReturnFalse() {
-		boolean result = userRegistration.mobileNumber("5647891233");
-		Assert.assertEquals(false, result);
-	}
-
-	/*
-	 * User need to follow Pre-defined password Rule-1 ---> Minimun 8 characters
-	 */
-	@Test
-	public void givenPassword_WhenProper_ShouldReturnTrue() {
-		boolean result = userRegistration.password("Qwertyiop");
-		Assert.assertEquals(true, result);
-	}
-
-	@Test
-	public void givenPassword_WhenNotProper_ShouldReturnFalse() {
-		boolean result = userRegistration.password("qwertyyuuiop");
-		Assert.assertEquals(false, result);
-	}
-
-	/*
-	 * Rule-2 ---> Should have at least 1 upper case
-	 */
-	@Test
-	public void givenPasswordRule2_WhenProper_ShouldReturnTrue() {
-		boolean result = userRegistration.password2("Qwertyu19");
-		Assert.assertEquals(true, result);
-	}
-
-	@Test
-	public void givenPasswordRule2_WhenNotProper_ShouldReturnFalse() {
-		boolean result = userRegistration.password2("qwerrty");
-		Assert.assertEquals(false, result);
-	}
-
-	/*
-	 * Rule-3 ---> Should have at least 1 numeric number in the password
-	 */
-	@Test
-	public void givenPasswordRule3_WhenProper_ShouldReturnTrue() {
-		boolean result = userRegistration.password3("Raja@123");
-		Assert.assertEquals(true, result);
-	}
-
-	@Test
-	public void givenPasswordRule3_WhenNotProper_ShouldReturnFalse() {
-		boolean result = userRegistration.password3("ar@ba");
-		Assert.assertEquals(false, result);
-	}
-
-	/*
-	 * Rule-4 ---> Has exactly 1 special character
-	 */
-	@Test
-	public void givenPasswordRule4_WhenProper_ShouldReturnTrue() {
-		boolean result = userRegistration.password4("Rajabaitha@1999");
-		Assert.assertEquals(true, result);
-	}
-
-	@Test
-	public void givenPasswordRule4_WhenNotProper_ShouldReturnFalse() {
-		boolean result = userRegistration.password4("Rajal99");
-		Assert.assertEquals(false, result);
-	}
-
-	/*
-	 * Its should be all email samples provided
-	 */
-	@Test
-	public void givenEmail8_WhenNotProper_ShouldReturnTrue() {
-		boolean result = userRegistration.emailIdValidator("abc.xyz@bl.co.in");
-		Assert.assertEquals(true, result);
-	}
-
-	@Test
-	public void givenEmail9_WhenNotProper_ShouldReturnFalse() {
-		boolean result = userRegistration.emailIdValidator("abc..2002@gmail.com");
-		Assert.assertEquals(false, result);
-	}
-
 }
