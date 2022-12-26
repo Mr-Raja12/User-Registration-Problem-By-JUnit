@@ -31,7 +31,7 @@ public class InvalidUserInputException extends Exception {
         }
 
     @Test
-    public void givenLastName_whenProper_ShouldReturnTrue() {
+    public void givenLastNameWhenProperShouldReturnTrue() {
         try{
        	UserRegistration userRegistrationRegEx = new UserRegistration();
         boolean result = userRegistrationRegEx.lastNameValidate("Baitha");
@@ -41,7 +41,7 @@ public class InvalidUserInputException extends Exception {
     }
 
     @Test
-    public void givenLastName_whenNotProper_ShouldReturnFalse() {
+    public void givenLastNameWhenNotProperShouldReturnFalse() {
         try{
        	UserRegistration userRegistrationRegEx = new UserRegistration();
         boolean result = userRegistrationRegEx.lastNameValidate("baitha");
@@ -51,7 +51,7 @@ public class InvalidUserInputException extends Exception {
     }
 
     @Test
-    public void givenEmail_whenProper_ShouldReturnTrue() {
+    public void givenEmailWhenProperShouldReturnTrue() {
         try{
        	UserRegistration userRegistrationRegEx = new UserRegistration();
         boolean result = userRegistrationRegEx.emailValidate("abc.xyz@bl.co.in");
@@ -61,7 +61,7 @@ public class InvalidUserInputException extends Exception {
     }
 
     @Test
-    public void givenEmail_whenNotProper_ShouldReturnFalse() {
+    public void givenEmailWhenNotProperShouldReturnFalse() {
         try{
        	UserRegistration userRegistrationRegEx = new UserRegistration();
         boolean result = userRegistrationRegEx.emailValidate("abc.xyz@bl.in");
@@ -71,7 +71,7 @@ public class InvalidUserInputException extends Exception {
     }
 
     @Test
-    public void givenPhone_whenProper_ShouldReturnTrue() {
+    public void givenPhoneWhenProperShouldReturnTrue() {
         try{
        	UserRegistration userRegistrationRegEx = new UserRegistration();
         boolean result = userRegistrationRegEx.phoneNumberValidate("91 8709177407");
@@ -81,7 +81,7 @@ public class InvalidUserInputException extends Exception {
     }
 
     @Test
-    public void givenPhone_whenNotProper_ShouldReturnFalse() {
+    public void givenPhoneWhenNotProperShouldReturnFalse() {
         try{
        	UserRegistration userRegistrationRegEx = new UserRegistration();
         boolean result = userRegistrationRegEx.phoneNumberValidate("7879219494");
@@ -91,7 +91,7 @@ public class InvalidUserInputException extends Exception {
     }
 
     @Test
-    public void givenPassword_whenProper_ShouldReturnTrue() {
+    public void givenPasswordWhenProperShouldReturnTrue() {
         try{
        	UserRegistration userRegistrationRegEx = new UserRegistration();
         boolean result = userRegistrationRegEx.passwordValidate("Abc12345#");
@@ -101,7 +101,7 @@ public class InvalidUserInputException extends Exception {
     }
 
     @Test
-    public void givenPassword_whenNotProper_ShouldReturnFalse() {
+    public void givenPasswordWhenNotProperShouldReturnFalse() {
         try{
        	UserRegistration userRegistrationRegEx = new UserRegistration();
         boolean result = userRegistrationRegEx.passwordValidate("Rajab23#%");

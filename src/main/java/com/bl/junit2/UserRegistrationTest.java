@@ -44,7 +44,7 @@ public class UserRegistrationTest {
 	}
 
 	@Test
-	public void givenEmailAsVar_ShouldReturnTrueorFalse() {
+	public void givenEmailAsVarShouldReturnTrueorFalse() {
 		assertEquals(expectedResult, validateEmail.validateEmail(emailTest));
 	}
 }
