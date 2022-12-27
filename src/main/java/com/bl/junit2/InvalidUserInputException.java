@@ -11,7 +11,7 @@ import org.junit.Test;
 public class InvalidUserInputException extends Exception {
 	
 	@Test
-	public void givenFirstName_whenProper_ShouldReturnTrue() {
+	public void givenFirstNameWhenProperShouldReturnTrue() {
         try {
         	UserRegistration userRegistrationRegEx = new UserRegistration();
             boolean result = userRegistrationRegEx.firstNameValidate("Raja");
@@ -21,7 +21,7 @@ public class InvalidUserInputException extends Exception {
     }
 
     @Test
-    public void givenFirstName_whenNotProper_ShouldReturnFalse() {
+    public void givenFirstNameWhenNotProperShouldReturnFalse() {
         try{
        	UserRegistration userRegistrationRegEx = new UserRegistration();
         boolean result = userRegistrationRegEx.firstNameValidate("raja");
